@@ -23,9 +23,12 @@ CRGB leds[NUM_LEDS];
 #define BRIGHTNESS          96
 #define FRAMES_PER_SECOND  120
 
+bool on = false;
+char incomingCharacter = 'i';
+
 void setup()
 {
-    Serial.println("Starting setup.")
+    Serial.println("Starting setup.");
     delay(3000); // 3 second delay for LED controller recovery
     Serial.begin(38400); // Start serial communication @ 38400 baud
     BTSerial.begin(38400);  // HC-10 default speed match serial connection baud
@@ -56,8 +59,15 @@ void loop()
     FastLED.delay(1000/FRAMES_PER_SECOND);
   }
     // Keep reading from HC-10 and send to Arduino Serial Monitor
-  if (BTSerial.available())
-    Serial.write(BTSerial.read());
+  if (BTSerial.available()){
+    incomingCharacter = BTSerial.read();
+    switch (incomingCharacter) {
+      case 'r':
+      on = true;
+      break;
+    }
+    }
+    Serial.write(incomingCharacter);
 
   // Keep reading from Arduino Serial Monitor and send to HC-05
   if (Serial.available())
@@ -133,13 +143,3 @@ void juggle() {
   }
 }
 
-void handleSerial() {
- while (Serial.available() > 0) {
-   char incomingCharacter = serial.read();
-   switch (incomingCharacter) {
-     case ‘r’:
-      rainbow();
-      break;
-    }
- }
-}
