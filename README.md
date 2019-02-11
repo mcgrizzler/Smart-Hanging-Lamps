@@ -1,6 +1,6 @@
 # Smart Hanging Lamps
 
-Project to create a mount and wireless LED controller to retro-fit some old lamps.  Should work on any cylindrical hanging lamps.
+Project to create a mount and wireless LED controller to retro-fit some old lamps.
 
 This was just a little home project, anyone is free to use the files or code for whatever they wish.
 
@@ -22,9 +22,6 @@ Printed Parts:
 ## Authors
 
 * **Mcgrizzler** - *Initial work* - [Mcgrizzler](https://github.com/mcgrizzler)
-
-## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
